@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1B1B1B">
+  <meta name="description"
+    content="vanilla shaper — interface styles shaper">
+  <link rel="apple-touch-icon" href="logo192.png">
+  <link rel="manifest" href="manifest.json">
+  <link href="css-reset.css" rel="stylesheet">
+  <link href="fonts.css" rel="stylesheet">
+  <link href="tabs.css" rel="stylesheet">
+  <script src="tabs.js"></script>
+  <title>vanilla shaper — interface styles shaper</title>
+  <link href="main.css" rel="stylesheet">
+  <style>
+    :root {
+      --baseTextSize: 0.9rem;
+      --textSizeIncrement: 1.23;
+      --text-xs: calc(var(--baseTextSize) / var(--textSizeIncrement));
+      --text-s: var(--baseTextSize);
+      --text-m: calc(var(--text-s) * var(--textSizeIncrement));
+      --text-l: calc(var(--text-m) * var(--textSizeIncrement));
+      --text-xl: calc(var(--text-l) * var(--textSizeIncrement));
+      --lineHeightFixedAmount: 0.35rem;
+      --lineHeightRelativeAmount: 1.1em;
+      --globalLineHeight: calc(var(--lineHeightFixedAmount) + var(--lineHeightRelativeAmount));
+      --fontFamily: system-ui, sans-serif;
+      --unit: 0.5rem;
+      --spaceIncrement: 1.65;
+      --space-s: var(--unit);
+      --space-m: calc(var(--space-s) * var(--spaceIncrement));
+      --space-l: calc(var(--space-m) * var(--spaceIncrement));
+      --space-xl: calc(var(--space-l) * var(--spaceIncrement));
+      --space-2xl: calc(var(--space-xl) * var(--spaceIncrement));
+      --space-3xl: calc(var(--space-2xl) * var(--spaceIncrement));
+      --space-4xl: calc(var(--space-3xl) * var(--spaceIncrement));
+      --textFrameRatio: 2.37;
+      --textFrameY: 0.8em;
+      --textFrameX: calc(var(--textFrameY) * var(--textFrameRatio));
+      --accentH: 254;
+      --accentS: 31%;
+      --accentL: 50%;
+      --c-accent: hsl(var(--accentH), var(--accentS), var(--accentL));
+      --c-accentContrasted: hsl(var(--accentH), var(--accentS), 95%);
+      --greyH: var(--accentH);
+      --greyS: 5%;
+      --initialGreyLightness: 93%;
+      --greyscaleLightnessIncrement: 11.3%;
+      --grey1L: var(--initialGreyLightness);
+      --grey2L: calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 1);
+      --grey3L: calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 2);
+      --grey4L: calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 3);
+      --grey5L: calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 4);
+      --grey6L: calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 5);
+      --grey7L: calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 6);
+      --grey8L: calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement) * 7);
+      --c-grey1: hsl(var(--greyH), var(--greyS), var(--grey1L));
+      --c-grey2: hsl(var(--greyH), var(--greyS), var(--grey2L));
+      --c-grey3: hsl(var(--greyH), var(--greyS), var(--grey3L));
+      --c-grey4: hsl(var(--greyH), var(--greyS), var(--grey4L));
+      --c-grey5: hsl(var(--greyH), var(--greyS), var(--grey5L));
+      --c-grey6: hsl(var(--greyH), var(--greyS), var(--grey6L));
+      --c-grey7: hsl(var(--greyH), var(--greyS), var(--grey7L));
+      --c-grey8: hsl(var(--greyH), var(--greyS), var(--grey8L));
+      --c-border: hsla(var(--greyH), var(--greyS), var(--grey8L), 0.1);
+      --c-overlay: hsla(var(--greyH), var(--greyS), var(--grey8L), 0.07);
+      --c-background: white;
+      --c-body: var(--c-grey8);
+      --c-bodyDimmed: hsla(var(--greyH), var(--greyS), var(--grey8L), 0.5);
+      --c-fieldBorder: var(--c-grey2);
+      --c-buttonBg: var(--c-grey2);
+      --radius: 0.4rem;
+      --fieldBorderWidth: 2px;
+    }
+
+    body.darkMode {
+      --c-border: hsla(var(--greyH), var(--greyS), var(--grey1L), 0.1);
+      --c-overlay: hsla(var(--greyH), var(--greyS), var(--grey1L), 0.07);
+      --c-background: var(--c-grey8);
+      --c-body: var(--c-grey1);
+      --c-bodyDimmed: hsla(var(--greyH), var(--greyS), var(--grey1L), 0.5);
+      --c-fieldBorder: var(--c-grey6);
+      --c-buttonBg: var(--c-grey6);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div>
+      <div class="settingsWrapper">
+        <div class="settingsGrid">
+          <div class="settingsGridColumn">
+            <h2 class="settingsGridColumnTitle">Typography</h2>
+            <div class="settingWrapper" style="--value: 23%;"><label
+                class="settingLabel" for="textSizeIncrement">Text
+                increment</label><input id="textSizeIncrement"
+                type="range" step="0.01" min="1" max="2" value="1.23">
+              <div class="settingNumberInputWrapper"><input
+                  id="textSizeIncrement_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="0.01" value="1.23">
+                <div class="settingNumberUnit">ratio</div>
+              </div>
+            </div>
+            <div class="settingWrapper"
+              style="--value: 8.333333333333329%;"><label
+                class="settingLabel" for="baseTextSize">Base
+                size</label><input id="baseTextSize" type="range"
+                step="0.01" min="0.8" max="2" value="0.9">
+              <div class="settingNumberInputWrapper"><input
+                  id="baseTextSize_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="0.01" value="0.9">
+                <div class="settingNumberUnit">rem</div>
+              </div>
+            </div>
+            <div class="settingWrapper"><label class="settingLabel"
+                for="fontFamily">Font</label><select id="fontFamily"
+                class="settingTextInput">
+                <option value="system-ui, sans-serif">System UI
+                </option>
+                <option value="'IBM Plex Sans', sans-serif">IBM Plex
+                  Sans</option>
+                <option value="'Merriweather', serif">Merriweather
+                </option>
+                <option value="'Nunito', sans-serif">Nunito</option>
+                <option value="'Roboto Mono', monospace">Roboto Mono
+                </option>
+                <option value="'Work Sans', sans-serif">Work Sans
+                </option>
+              </select></div>
+          </div>
+          <div class="settingsGridColumn">
+            <h2 class="settingsGridColumnTitle">Spacing</h2>
+            <div class="settingWrapper"
+              style="--value: 24.999999999999986%;"><label
+                class="settingLabel" for="unit">Unit</label><input
+                id="unit" type="range" step="0.01" min="0.4" max="0.8"
+                value="0.5">
+              <div class="settingNumberInputWrapper"><input
+                  id="unit_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="0.01" value="0.5">
+                <div class="settingNumberUnit">rem</div>
+              </div>
+            </div>
+            <div class="settingWrapper" style="--value: 65%;"><label
+                class="settingLabel" for="spaceIncrement">Space
+                increment</label><input id="spaceIncrement"
+                type="range" step="0.01" min="1" max="2" value="1.65">
+              <div class="settingNumberInputWrapper"><input
+                  id="spaceIncrement_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="0.01" value="1.65">
+                <div class="settingNumberUnit">ratio</div>
+              </div>
+            </div>
+          </div>
+          <div class="settingsGridColumn">
+            <h2 class="settingsGridColumnTitle" style="opacity: 0;">-
+            </h2>
+            <div class="settingWrapper" style="--value: 80%;"><label
+                class="settingLabel" for="textFrameY">Text
+                frame</label><input id="textFrameY" type="range"
+                step="0.01" min="0" max="1" value="0.8">
+              <div class="settingNumberInputWrapper"><input
+                  id="textFrameY_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="0.01" value="0.8">
+                <div class="settingNumberUnit">em</div>
+              </div>
+            </div>
+            <div class="settingWrapper" style="--value: 68.5%;"><label
+                class="settingLabel" for="textFrameRatio">Button
+                proportion</label><input id="textFrameRatio"
+                type="range" step="0.01" min="1" max="3" value="2.37">
+              <div class="settingNumberInputWrapper"><input
+                  id="textFrameRatio_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="0.01" value="2.37">
+                <div class="settingNumberUnit">ratio</div>
+              </div>
+            </div>
+          </div>
+          <div class="settingsGridColumn">
+            <h2 class="settingsGridColumnTitle">Color</h2>
+            <div class="settingWrapper"
+              style="--value: 70.55555555555556%;"><label
+                class="settingLabel" for="accentHue">Accent
+                hue</label><input id="accentHue" type="range" step="1"
+                min="0" max="360" value="254">
+              <div class="settingNumberInputWrapper"><input
+                  id="accentHue_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="1" value="254">
+                <div class="settingNumberUnit">°</div>
+              </div>
+            </div>
+            <div class="settingWrapper" style="--value: 31%;"><label
+                class="settingLabel" for="accentSaturation">Accent
+                saturation</label><input id="accentSaturation"
+                type="range" step="1" min="0" max="100" value="31">
+              <div class="settingNumberInputWrapper"><input
+                  id="accentSaturation_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="1" value="31">
+                <div class="settingNumberUnit">%</div>
+              </div>
+            </div>
+            <div class="settingWrapper" style="--value: 50%;"><label
+                class="settingLabel" for="accentLightness">Accent
+                lightness</label><input id="accentLightness"
+                type="range" step="1" min="0" max="100" value="50">
+              <div class="settingNumberInputWrapper"><input
+                  id="accentLightness_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="1" value="50">
+                <div class="settingNumberUnit">%</div>
+              </div>
+            </div>
+          </div>
+          <div class="settingsGridColumn">
+            <h2 class="settingsGridColumnTitle" style="opacity: 0;">-
+            </h2>
+            <div class="settingWrapper" style="--value: 5%;"><label
+                class="settingLabel" for="greySaturation">Grey
+                saturation</label><input id="greySaturation"
+                type="range" step="1" min="0" max="100" value="5">
+              <div class="settingNumberInputWrapper"><input
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="1" value="5">
+                <div class="settingNumberUnit">%</div>
+              </div>
+            </div>
+          </div>
+          <div class="settingsGridColumn">
+            <h2 class="settingsGridColumnTitle">Layer</h2>
+            <div class="settingWrapper" style="--value: 40%;"><label
+                class="settingLabel" for="radius">Radius</label><input
+                id="radius" type="range" step="0.01" min="0" max="1"
+                value="0.4">
+              <div class="settingNumberInputWrapper"><input
+                  id="radius_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="0.01" value="0.4">
+                <div class="settingNumberUnit">rem</div>
+              </div>
+            </div>
+            <div class="settingWrapper" style="--value: 50%;"><label
+                class="settingLabel" for="fieldBorderWidth">Field
+                border</label><input id="fieldBorderWidth"
+                type="range" step="1" min="1" max="3" value="2">
+              <div class="settingNumberInputWrapper"><input
+                  id="fieldBorderWidth_display"
+                  class="settingTextInput settingTextInputSmall"
+                  type="number" step="1" value="2">
+                <div class="settingNumberUnit">px</div>
+              </div>
+            </div>
+            <div class="settingWrapper">
+              <div class="switchSettingWrapper"><label
+                  class="switchTrack"><input id="buttonRound"
+                    type="checkbox">
+                  <div class="switchKnob"></div>
+                </label><label class="settingLabel"
+                  for="buttonRound">Round buttons</label></div>
+            </div>
+          </div>
+          <div class="settingsGridColumn triggersColumn">
+            <div class="randomButtonSection"><button
+                class="triggerButton">Randomize</button></div>
+            <div class="settingWrapper">
+              <div class="switchSettingWrapper"><label
+                  class="switchTrack"><input id="darkMode"
+                    type="checkbox">
+                  <div class="switchKnob"></div>
+                </label><label class="settingLabel"
+                  for="darkMode">Dark mode</label></div>
+            </div>
+            <div>
+              <div class="settingButtonGroup"><button
+                  class="settingButton active">Demo</button><button
+                  class="settingButton">Specs</button></div>
+            </div>
+          </div>
+          <div class="mainLogoSection">
+            <div class="mainLogo">
+              <span>S</span><span>H</span><span>A</span><span>P</span><span>E</span><span>R</span>
+            </div><a class="ghIcon"
+              href="https://github.com/bjelline/vanilla-shaper"
+              target="_blank" rel="noopener noreferrer"><svg
+                viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                <path fill="currentColor" fill-rule="evenodd"
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                </path>
+              </svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="displayWrapper">
+        <aside class="sidebar">
+          <div class="logo mb-xl"></div><button
+            class="button button-accent text-l mb-xl">New</button>
+          <div class="menuItem">First Section</div>
+          <div class="menuItem active">Second Section</div>
+          <div class="menuItem">Third Section</div>
+          <div class="menuItem">Fourth Section</div>
+        </aside>
+        <main>
+          <h1 class="mb-l"><strong>Shape The Style</strong></h1>
+          <div class="tabs">
+            <div role="tablist" aria-labelledby="tablist-1" class="automatic">
+              <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1">
+                <span class="focus">Maria Ahlefeldt</span>
+              </button>
+              <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1">
+                <span class="focus">Carl Andersen</span>
+              </button>
+              <button id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1">
+                <span class="focus">Ida da Fonseca</span>
+              </button>
+              <button id="tab-4" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-4" tabindex="-1">
+                <span class="focus">Peter Müller</span>
+              </button>
+            </div>
+
+            <div id="tabpanel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1" class="">
+              <p>
+                Maria Theresia Ahlefeldt (16 January 1755 – 20 December 1810) was a Danish, (originally German), composer.
+                She is known as the first female composer in Denmark.
+                Maria Theresia composed music for several ballets, operas, and plays of the royal theatre.
+                She was given good critic as a composer and described as a “<span lang="da">virkelig Tonekunstnerinde</span>” ('a True Artist of Music').
+              </p>
+            </div>
+            <div id="tabpanel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2" class="is-hidden">
+              <p>
+                Carl Joachim Andersen (29 April 1847 – 7 May 1909) was a Danish flutist, conductor and composer born in Copenhagen, son of the flutist Christian Joachim Andersen.
+                Both as a virtuoso and as composer of flute music, he is considered one of the best of his time.
+                He was considered to be a tough leader and teacher and demanded as such a lot from his orchestras but through that style he reached a high level.
+              </p>
+            </div>
+            <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" class="is-hidden">
+              <p>
+                Ida Henriette da Fonseca (July 27, 1802 – July 6, 1858) was a Danish opera singer and composer.
+                Ida Henriette da Fonseca was the daughter of Abraham da Fonseca (1776–1849) and Marie Sofie Kiærskou (1784–1863).
+                She and her sister Emilie da Fonseca were students of Giuseppe Siboni, choir master of the Opera in Copenhagen.
+                She was given a place at the royal Opera alongside her sister the same year she debuted in 1827.
+              </p>
+            </div>
+            <div id="tabpanel-4" role="tabpanel" tabindex="0" aria-labelledby="tab-4" class="is-hidden">
+              <p>
+                Peter Erasmus Lange-Müller (1 December 1850 – 26 February 1926) was a Danish composer and pianist.
+                His compositional style was influenced by Danish folk music and by the work of Robert Schumann; Johannes Brahms; and his Danish countrymen, including J.P.E. Hartmann.
+              </p>
+            </div>
+          </div>
+          <article>
+            <p lang="en"> Different languages may use different
+              alphabets or scripts—for example, both English and
+              German use the Latin alphabet, Greek has its own
+              alphabet, and Bulgarian uses Cyrillic. Be sure to mark
+              the language correctly! </p>
+            <p lang="de"> Verschiedene Sprachen können
+              unterschiedliche Alphabete oder Schriftsysteme verwenden
+              – zum Beispiel verwenden Englisch und Deutsch das
+              lateinische Alphabet, Griechisch hat ein eigenes
+              Alphabet und Bulgarisch verwendet das kyrillische
+              Alphabet. Achten Sie darauf, die Sprache korrekt zu
+              kennzeichnen! </p>
+            <p lang="el"> Διαφορετικές γλώσσες ενδέχεται να
+              χρησιμοποιούν διαφορετικά αλφάβητα ή συστήματα γραφής –
+              για παράδειγμα, τα αγγλικά και τα γερμανικά
+              χρησιμοποιούν το λατινικό αλφάβητο, τα ελληνικά έχουν το
+              δικό τους αλφάβητο και τα βουλγαρικά χρησιμοποιούν το
+              κυριλλικό. Βεβαιωθείτε ότι σημειώνετε σωστά τη γλώσσα!
+            </p>
+            <p lang="bg"> Различните езици могат да използват различни
+              азбуки или писмени системи – например английският и
+              немският използват латиницата, гръцкият има своя
+              собствена азбука, а българският използва кирилицата.
+              Уверете се, че езикът е правилно отбелязан! </p>
+          </article>
+          <div class="mt-xl"></div>
+          <div class="formGrid">
+            <div><label>Email</label><input type="text"
+                class="textInput mt-s" value="email@example.com">
+            </div>
+            <div><label>Password</label><input type="password"
+                class="textInput mt-s" value="123456"></div><button
+              class="button">Log in</button>
+          </div>
+          <div class="mb-xl"></div>
+        </main>
+        <aside class="detailsPanel">
+          <div class="userCard mb-xl ">
+            <div class="userCardAvatar"></div>
+            <div class="userCardInfo">
+              <div class="userCardName">Kiyoko Riku</div>
+              <div class="userCardHandle c-bodyDimmed">@kiyoko</div>
+            </div><button class="button buttonSmall">Follow</button>
+          </div>
+          <div class="searchSection"><input type="text"
+              class="textInput" placeholder="Search"></div>
+          <div class="post mb-xl">
+            <div class="postLeft">
+              <div class="postAvatar"></div>
+            </div>
+            <div class="postMain">
+              <div class="postAuthor">Ichirō Nori</div>
+              <div class="postContent mb-m text-l">As suggested this
+                version should keep correct timings when changing
+                looping lengths.</div>
+              <div class="postDate text-s c-bodyDimmed">6:51 p. m. ·
+                11 jun. 2020</div>
+            </div>
+          </div>
+          <div class="mb-m"></div>
+          <div class="highlightCard">
+            <div class="highlightCardInfo"><strong>This device
+                includes 4 delays </strong>Greater control to generate
+              loops</div>
+            <div class="highlightCardAvatars">
+              <div class="highlightCardAvatar"></div>
+              <div class="highlightCardAvatar"></div>
+              <div class="highlightCardAvatar"></div>
+            </div>
+          </div>
+          <div class="mb-m"></div>
+          <div class="chartCard">
+            <div class="chart">
+              <div class="data pb-s">
+                <div class="dataTitle">Data</div>
+                <div class="dataNumber text-xl"><span
+                    class="c-bodyDimmed">$</span><strong>731</strong>
+                </div>
+              </div><svg viewBox="0 0 172 35" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1 31L14.2951 28.4192C15.6894 28.1485 17.1344 28.3813 18.3732 29.0759L25.6071 33.1326C28.8826 34.9695 33.0214 33.3799 34.2252 29.8227L41.5807 8.08787C43.4304 2.62227 51.175 2.66282 52.9673 8.14749L59.5625 28.3291C61.0033 32.7381 66.6882 33.9146 69.7607 30.4397L75.4172 24.0421C77.1235 22.1123 79.8713 21.487 82.2446 22.4884L88.2045 25.0031C91.2555 26.2904 94.7754 24.8726 96.1588 21.8639C99.6048 14.3691 105.859 1.75955 109.182 1.16666C113.743 0.352774 123.828 13.9035 124.591 14.9377C124.624 14.9837 124.653 15.0235 124.685 15.0706L135.49 30.8019C137.776 34.1299 142.63 34.2958 145.138 31.1316L154.496 19.3246C155.182 18.4584 156.095 17.7986 157.132 17.4181L171 12.3333"
+                  stroke="var(--c-accent)" stroke-width="2"></path>
+              </svg>
+            </div>
+            <div class="chart">
+              <div class="data pb-s">
+                <div class="dataTitle">Data</div>
+                <div class="dataNumber text-xl"><span
+                    class="c-bodyDimmed">$</span><strong>294</strong>
+                </div>
+              </div><svg viewBox="0 0 172 39" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1 22L13.3569 13.2048C15.2481 11.8587 17.7461 11.7243 19.7709 12.8598L27.2149 17.0342C29.8858 18.5321 33.2561 17.7782 35.0344 15.2852L43.27 3.73918C45.4164 0.729889 49.7472 0.35847 52.3748 2.95832L62.1256 12.6064C62.5843 13.0603 62.9668 13.5852 63.2583 14.1609L73.3924 34.1745C75.5192 38.3746 81.4338 38.601 83.8754 34.5757L91.1421 22.5954C92.6407 20.1247 95.6875 19.0732 98.3909 20.0936L107.636 23.5831C108.648 23.965 109.741 24.0642 110.809 23.8936C114.344 23.3293 119.467 22.6566 122.382 22.2841C123.836 22.0983 125.172 21.3935 126.142 20.295L135.226 10.0084C137.739 7.16297 142.23 7.3369 144.515 10.3681L154.071 23.0447C155.016 24.298 156.415 25.1312 157.967 25.3656L171 27.3333"
+                  stroke="var(--c-accent)" stroke-width="2"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="mb-m"></div>
+          <div class="detailsCard">
+            <div class="text-s mb-m">Ichirō Nori</div>
+            <div class="text-m mb-m">Added a preset system; now you
+              can store/recall settings within a live set</div>
+            <div class="text-s mb-l c-bodyDimmed">As suggested this
+              version should keep correct timings when changing
+              looping lengths.</div>
+            <div class="detailsActions"><button
+                class="button button-accent">Save</button><button
+                class="button ml-s">Cancel</button></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+  <script>
+        // Function to handle property changes
+    function change_property(propertyName, newValue) {
+      // Update the corresponding display input
+      const displayElement = document.getElementById(propertyName + '_display');
+      if (displayElement) {
+        displayElement.value = newValue;
+      }
+
+      // Set the CSS custom property
+      try {
+        document.documentElement.style.setProperty('--' + propertyName, newValue);
+      } catch (error) {
+        console.error(`Error setting CSS property --${propertyName}:`, error);
+      }
+    }
+
+    // Wire up all range inputs and the select box
+    document.addEventListener('DOMContentLoaded', function () {
+      // Range inputs
+      const rangeInputDefinitions = [
+        { id: 'textSizeIncrement', property: 'textSizeIncrement', postfix: '' },
+        { id: 'baseTextSize', property: 'baseTextSize', postfix: 'rem' },
+        { id: 'unit', property: 'unit', postfix: 'rem' },
+        { id: 'spaceIncrement', property: 'spaceIncrement', postfix: '' },
+        { id: 'textFrameY', property: 'textFrameY', postfix: 'em' },
+        { id: 'textFrameRatio', property: 'textFrameRatio', postfix: '' },
+        { id: 'accentHue', property: 'accentHue', postfix: 'deg' },
+        { id: 'accentSaturation', property: 'accentSaturation', postfix: '%' },
+        { id: 'accentLightness', property: 'accentLightness', postfix: '%' },
+        { id: 'greySaturation', property: 'greySaturation', postfix: '%' },
+        { id: 'radius', property: 'radius', postfix: 'rem' },
+        { id: 'fieldBorderWidth', property: 'fieldBorderWidth', postfix: 'px' }
+      ];
+
+      // Wire up range inputs
+      rangeInputDefinitions.forEach(input => {
+        const element = document.getElementById(input.id);
+        if (element) {
+          element.addEventListener('input', function () {
+            const valueWithUnit = this.value + input.postfix;
+            change_property(input.property, valueWithUnit);
+          });
+        }
+      });
+
+      // Wire up the font family select box
+      const fontSelect = document.getElementById('fontFamily');
+      if (fontSelect) {
+        fontSelect.addEventListener('change', function () {
+          change_property('fontFamily', this.value);
+        });
+      }
+
+      // Wire up display input fields
+      const displayInputs = [
+        { id: 'textSizeIncrement_display', property: 'textSizeIncrement', postfix: '' },
+        { id: 'baseTextSize_display', property: 'baseTextSize', postfix: 'rem' },
+        { id: 'unit_display', property: 'unit', postfix: 'rem' },
+        { id: 'spaceIncrement_display', property: 'spaceIncrement', postfix: '' },
+        { id: 'textFrameY_display', property: 'textFrameY', postfix: 'em' },
+        { id: 'textFrameRatio_display', property: 'textFrameRatio', postfix: '' },
+        { id: 'accentHue_display', property: 'accentHue', postfix: 'deg' },
+        { id: 'accentSaturation_display', property: 'accentSaturation', postfix: '%' },
+        { id: 'accentLightness_display', property: 'accentLightness', postfix: '%' },
+        { id: 'radius_display', property: 'radius', postfix: 'rem' },
+        { id: 'fieldBorderWidth_display', property: 'fieldBorderWidth', postfix: 'px' }
+      ];
+
+      displayInputs.forEach(input => {
+        const element = document.getElementById(input.id);
+        if (element) {
+          element.addEventListener('input', function () {
+            const valueWithUnit = this.value + input.postfix;
+            change_property(input.property, valueWithUnit);
+          });
+        }
+      });
+
+            // Function to set random values for all range inputs
+      function setRandom() {
+        // Generate random values for each range input
+        rangeInputDefinitions.forEach(input => {
+          const rangeElement = document.getElementById(input.id);
+          if (rangeElement) {
+            // Get the min and max values from the range input
+            const min = parseFloat(rangeElement.min);
+            const max = parseFloat(rangeElement.max);
+            const step = parseFloat(rangeElement.step);
+
+            // Generate a random value within the range
+            const randomValue = Math.random() * (max - min) + min;
+
+            // Round to the appropriate number of decimal places based on step
+            const decimalPlaces = step.toString().split('.')[1]?.length || 0;
+            const roundedValue = Math.round(randomValue * Math.pow(10, decimalPlaces)) / Math.pow(10, decimalPlaces);
+
+            // Set the range input value
+            rangeElement.value = roundedValue;
+          }
+        });
+      }
+
+            // Function to set random values for all range inputs
+      function setAllValues() {
+        // iterate over the definitions
+        rangeInputDefinitions.forEach(input => {
+          const rangeElement = document.getElementById(input.id);
+          if (rangeElement) {
+                        const valueWithUnit = rangeElement.value + input.postfix;
+            change_property(input.property, valueWithUnit);
+          }
+        });
+      }
+
+      // Wire up the randomize button
+      const randomizeButton = document.querySelector('.triggerButton');
+      if (randomizeButton) {
+        randomizeButton.addEventListener('click', () => {
+          setRandom();
+          setAllValues();
+        });
+      }
+
+      // Initialize all values on page load
+      setAllValues();
+    });
+  </script>
+</body>
+
+</html>

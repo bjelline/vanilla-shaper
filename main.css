@@ -1,3 +1,8 @@
+p {
+  margin: var(--space-m) 0;
+}
+
+
 .limitLineLength {
   max-width: 30em;
 }
@@ -34,19 +39,19 @@
 .bgc-accentContrasted {
   background-color: var(--c-accentContrasted);
 }
-.text-xs {
+.text-xs,h5 {
   font-size: var(--text-xs);
 }
-.text-s {
+.text-s,h4 {
   font-size: var(--text-s);
 }
-.text-m {
+.text-m, h3 {
   font-size: var(--text-m);
 }
-.text-l {
+.text-l, h2 {
   font-size: var(--text-l);
 }
-.text-xl {
+.text-xl, h1 {
   font-size: var(--text-xl);
 }
 .mt-s {
@@ -621,11 +626,11 @@ input[type="range"]::-moz-range-track {
   background: hsla(0, 0%, 100%, 0.2);
   border: none;
 }
-.emailWrapper,
-.emailWrapper * {
+.displayWrapper,
+.displayWrapper * {
   line-height: var(--globalLineHeight);
 }
-.emailWrapper {
+.displayWrapper {
   font-size: var(--text-s);
   color: var(--c-body);
   font-family: var(--fontFamily);
@@ -730,24 +735,7 @@ main {
   grid-gap: var(--space-s);
   align-items: end;
 }
-.tabs {
-  display: flex;
-}
-.tab {
-  font-size: var(--text-m);
-  border-bottom: 2px solid transparent;
-  padding-bottom: 0.2em;
-}
-.tab:not(.active) {
-  cursor: pointer;
-  color: var(--c-bodyDimmed);
-}
-.tab + .tab {
-  margin-left: var(--space-l);
-}
-.tab.active {
-  border-color: var(--c-accent);
-}
+
 .messageBox {
   padding: var(--space-m);
   background-color: var(--c-primary-3xlight);
@@ -808,7 +796,7 @@ main {
   z-index: 3;
 }
 @media (max-width: 1100px) {
-  .emailWrapper {
+  .displayWrapper {
     grid-template-columns: 1fr;
   }
   .sidebar {
