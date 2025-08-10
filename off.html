@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="Document Noscript">
+<head>
+  <meta charset="UTF-8">
+  <title>Off-Canvas Navigation ²</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swapp">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <script>(()=>{const d=document.documentElement;d.classList.remove("Noscript"),d.classList.add("Script")})();</script>
+  <link rel="stylesheet" href="off.css">
+
+  </head>
+<body>
+<a class="Top" id="top" href="#main">
+  <span>skip to content</span>
+</a>
+<div class="Page">
+  <header class="Header Header--sticky">
+    <a target="_top" href="https://codepen.io/dbushell/full/xxmzddB"><b>Demo Website</b></a>
+    <button popovertarget="nav" class="Hamburger">
+      <span>Menu</span>
+    </button>
+  </header>
+  <main class="Main" id="main">
+    <h1>🍀 Off-Canvas Navigation ²</h1>
+    <p><strong>WORK IN PROGRESS! This is very experimental and <u>not yet accessibility reviewed!</u></strong></p>
+    <p>Last updated <em>2nd October 2023</em></p>
+    <ul>
+      <li>A rebuild of the <a target="_blank" href="https://codepen.io/dbushell/full/yLMEogE">original CodePen</a></li>
+      <li>Core interactivity does not need JavaScript</li>
+      <li>Handles focus state and keyboard navigation</li>
+      <li>Uses CSS <b><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Popover_API">popover</a></b> for sub-menus</li>
+      <li>Respects reduced motion preference</li>
+      <li>Optional sticky / auto-hide header</li>
+      <li><a href="#nav">Open navigation</a> from any link</li>
+      <li>
+        <label>
+          <input type="checkbox" id="toggle-rtl" autocomplete="off">
+          <span>Supports <abbr title="right-to-left">RTL</abbr> styles</span>
+        </label>
+      </li>
+    </ul>
+    <p><a target="_blank" href="https://dbushell.com/2021/06/17/css-off-canvas-responsive-navigation/">Read my original blog article for more information</a></p>
+    <p>Feedback and comments: <a href="https://twitter.com/dbushell" target="_blank">@dbushell</a> and <a href="https://fosstodon.org/@dbushell" target="_blank">@dbushell@fosstodon.org</a></p>
+    <h2>Possible issues</h2>
+    <p><b>Firefox</b> as of version 118 requires a <a target="_blank" href="https://github.com/oddbird/popover-polyfill">polyfill</a> for <a target="_blank" href="https://caniuse.com/?search=popover">popover</a></p>
+  </main>
+  <footer class="Footer">
+    <p>
+      <small>
+        <span>MIT licensed | Copyright © 2023</span>
+        <span><a href="https://dbushell.com" target="_blank">David Bushell</a></span>
+      </small>
+    </p>
+  </footer>
+</div>
+<!--/Page--->
+<dialog popover class="Nav" id="nav">
+  <nav class="Nav__body" aria-labelledby="nav-heading">
+    <header class="Nav__header">
+      <h2 class="Nav__heading" id="nav-heading">Menu</h2>
+      <button popovertarget="nav" popovertargetaction="close" class="Hamburger">
+        <span>Close</span>
+      </button>
+    </header>
+    <ul class="Nav__menu" id="menu-0">
+      <li class="Nav__item">
+        <button popovertarget="menu-1" class="Nav__link">
+          <span id="menu-1-heading">Sub Menu 1</span>
+        </button>
+        <ul popover class="Nav__menu" id="menu-1" aria-labelledby="menu-1-heading">
+          <li class="Nav__item">
+            <button popovertarget="menu-1" popovertargetaction="close" class="Nav__link">
+              <span>Back</span>
+              <span class="Hidden">to main menu</span>
+            </button>
+          </li>
+          <li class="Nav__item">
+            <button popovertarget="menu-3" class="Nav__link">
+              <span id="menu-3-heading">Nested Sub Menu 3</span>
+            </button>
+            <ul popover class="Nav__menu" id="menu-3" aria-labelledby="menu-3-heading">
+              <li class="Nav__item">
+                <button popovertarget="menu-3" popovertargetaction="close" class="Nav__link">
+                  <span>Back</span>
+                  <span class="Hidden">to parent menu</span>
+                </button>
+              </li>
+              <li class="Nav__item">
+                <a href="#" class="Nav__link">Menu Item</a>
+              </li>
+              <li class="Nav__item">
+                <a href="#" class="Nav__link">Menu Item</a>
+              </li>
+              <li class="Nav__item">
+                <a href="#" class="Nav__link">Menu Item</a>
+              </li>
+            </ul>
+          </li>
+          <li class="Nav__item">
+            <a href="#" class="Nav__link">Menu Item</a>
+          </li>
+          <li class="Nav__item">
+            <a href="#" class="Nav__link">Menu Item</a>
+          </li>
+        </ul>
+      </li>
+      <li class="Nav__item">
+        <button popovertarget="menu-2" class="Nav__link">
+          <span id="menu-2-heading">Sub Menu 2</span>
+        </button>
+        <ul popover class="Nav__menu" id="menu-2" aria-labelledby="menu-2-heading">
+          <li class="Nav__item">
+            <button popovertarget="menu-2" popovertargetaction="close" class="Nav__link">
+              <span>Back</span>
+              <span class="Hidden">to main menu</span>
+            </button>
+          </li>
+          <li class="Nav__item">
+            <a href="#" class="Nav__link">Menu Item</a>
+          </li>
+          <li class="Nav__item">
+            <a href="#" class="Nav__link">Menu Item</a>
+          </li>
+          <li class="Nav__item">
+            <a href="#" class="Nav__link">Menu Item</a>
+          </li>
+          <li class="Nav__item">
+            <a href="#" class="Nav__link">Menu Item</a>
+          </li>
+          <li class="Nav__item">
+            <a href="#" class="Nav__link">Menu Item</a>
+          </li>
+          <li class="Nav__item">
+            <a href="#" class="Nav__link">Menu Item</a>
+          </li>
+          <li class="Nav__item">
+            <a href="#" class="Nav__link">Menu Item</a>
+          </li>
+        </ul>
+      </li>
+      <li class="Nav__item">
+        <a href="#" class="Nav__link">Menu Item</a>
+      </li>
+    </ul>
+  </nav>
+  <!--/Nav__body-->
+</dialog>
+<!--/Nav-->
+<!-- partial -->
+  <script  src="off.js"></script>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -303,87 +304,127 @@
       </div>
       <div class="displayWrapper">
         <aside class="sidebar">
-          <div class="logo mb-xl"></div><button
+          <div class="logo mb-xl"></div>
+          <button
             class="button button-accent text-l mb-xl">New</button>
-          <div class="menuItem">First Section</div>
-          <div class="menuItem active">Second Section</div>
-          <div class="menuItem">Third Section</div>
-          <div class="menuItem">Fourth Section</div>
+          <div class="menuItem active">First Page</div>
+          <div class="menuItem ">Second Page</div>
+          <div class="menuItem">Third Page</div>
+          <div class="menuItem">Fourth Page</div>
         </aside>
         <main>
-          <h1 class="mb-l"><strong>Shape The Style</strong></h1>
-          <div class="tabs">
-            <div role="tablist" aria-labelledby="tablist-1" class="automatic">
-              <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1">
-                <span class="focus">Maria Ahlefeldt</span>
-              </button>
-              <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1">
-                <span class="focus">Carl Andersen</span>
-              </button>
-              <button id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1">
-                <span class="focus">Ida da Fonseca</span>
-              </button>
-              <button id="tab-4" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-4" tabindex="-1">
-                <span class="focus">Peter Müller</span>
-              </button>
-            </div>
+          <h1>CSS Anpassen mit Custom Properties</h1>
 
-            <div id="tabpanel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1" class="">
-              <p>
-                Maria Theresia Ahlefeldt (16 January 1755 – 20 December 1810) was a Danish, (originally German), composer.
-                She is known as the first female composer in Denmark.
-                Maria Theresia composed music for several ballets, operas, and plays of the royal theatre.
-                She was given good critic as a composer and described as a “<span lang="da">virkelig Tonekunstnerinde</span>” ('a True Artist of Music').
-              </p>
+          <h2>Qualitätskriterien für HTML</h2>
+          <div class="tabs">
+            <div role="tablist" aria-labelledby="tablist-1"
+              class="automatic">
+              <button id="tab-1" type="button" role="tab"
+                aria-selected="true" aria-controls="tabpanel-1">
+                Korrekt </button>
+              <button id="tab-2" type="button" role="tab"
+                aria-selected="false" aria-controls="tabpanel-2"
+                tabindex="-1"> Responsive </button>
+              <button id="tab-3" type="button" role="tab"
+                aria-selected="false" aria-controls="tabpanel-3"
+                tabindex="-1"> Accessible </button>
+              <button id="tab-4" type="button" role="tab"
+                aria-selected="false" aria-controls="tabpanel-4"
+                tabindex="-1"> Multi Lingual </button>
+                <button id="tab-5" type="button" role="tab"
+                aria-selected="true" aria-controls="tabpanel-5">
+                Semantisch </button>
             </div>
-            <div id="tabpanel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2" class="is-hidden">
-              <p>
-                Carl Joachim Andersen (29 April 1847 – 7 May 1909) was a Danish flutist, conductor and composer born in Copenhagen, son of the flutist Christian Joachim Andersen.
-                Both as a virtuoso and as composer of flute music, he is considered one of the best of his time.
-                He was considered to be a tough leader and teacher and demanded as such a lot from his orchestras but through that style he reached a high level.
+            <article id="tabpanel-1" role="tabpanel"
+              aria-labelledby="tab-1" class="">
+              <p>HTML ist eine Auszeichnungssprache mit einer fixen
+                Grammatik. Erst mal muss das HTML einer Webseite also zu dieser
+                Grammatik passen.  Dann ist das HTML korrekt oder "valide".
+
               </p>
-            </div>
-            <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" class="is-hidden">
-              <p>
-                Ida Henriette da Fonseca (July 27, 1802 – July 6, 1858) was a Danish opera singer and composer.
-                Ida Henriette da Fonseca was the daughter of Abraham da Fonseca (1776–1849) and Marie Sofie Kiærskou (1784–1863).
-                She and her sister Emilie da Fonseca were students of Giuseppe Siboni, choir master of the Opera in Copenhagen.
-                She was given a place at the royal Opera alongside her sister the same year she debuted in 1827.
+            </article>
+            <article id="tabpanel-2" role="tabpanel"
+              aria-labelledby="tab-2" class="is-hidden">
+              <p>Es gibt viele verschiedene Ausgabegeräte für
+                Webseiten. Für die Gestaltung des visuellen Layouts
+                von Webseiten spielt dabei die die Größe des Geräts,
+                die Auflösung und die Pixeldichte eine wichtige Rolle.
               </p>
-            </div>
-            <div id="tabpanel-4" role="tabpanel" tabindex="0" aria-labelledby="tab-4" class="is-hidden">
-              <p>
-                Peter Erasmus Lange-Müller (1 December 1850 – 26 February 1926) was a Danish composer and pianist.
-                His compositional style was influenced by Danish folk music and by the work of Robert Schumann; Johannes Brahms; and his Danish countrymen, including J.P.E. Hartmann.
+              <p>Große Unterschiede im Platz kann man mit Mediaqueries
+                in CSS behandeln. Die Verwendung von Mediaqueries
+                wurde 2010 <a
+                  href="https://alistapart.com/article/responsive-web-design/">in
+                  einem Artikel von Ethan Marcotte</a> in “A List
+                Apart” unter dem Begriff “Responsive Webdesign”
+                popularisiert.</p>
+            </article>
+            <article id="tabpanel-3" role="tabpanel"
+              aria-labelledby="tab-3" class="is-hidden">
+              <p> Der deutsche Begriff „Barrierefreiheit“ entspricht
+                dem englischen Begriff „Accessability“. Ein Tipp zur
+                Recherche: der englische Begriff wird manchmal als
+                a11y abgekürzt - a, gefolgt von 11 Buchstaben, gefolgt
+                von y. </p>
+              <p> Barrierefreiheit ist ein Thema das von Stadtplanung
+                und Architektur bis zur Gestaltung einzelner Produkte
+                und Dienstleistungen viele Fachgebiete betrifft. </p>
+              <p> Als WebprogrammierInnen liegt es in unserer
+                Verantwortung Webseiten und Webapplikationen
+                barrierefrei zu gestalten </p>
+            </article>
+            <article id="tabpanel-4" role="tabpanel"
+              aria-labelledby="tab-4" class="is-hidden">
+              <p lang="en"> Different languages may use different
+                alphabets or scripts—for example, both English and
+                German use the Latin alphabet, Greek has its own
+                alphabet, and Bulgarian uses Cyrillic. Be sure to mark
+                the language correctly! </p>
+              <p lang="de"> Verschiedene Sprachen können
+                unterschiedliche Alphabete oder Schriftsysteme
+                verwenden – zum Beispiel verwenden Englisch und
+                Deutsch das lateinische Alphabet, Griechisch hat ein
+                eigenes Alphabet und Bulgarisch verwendet das
+                kyrillische Alphabet. Achten Sie darauf, die Sprache
+                korrekt zu kennzeichnen! </p>
+              <p lang="el"> Διαφορετικές γλώσσες ενδέχεται να
+                χρησιμοποιούν διαφορετικά αλφάβητα ή συστήματα γραφής
+                – για παράδειγμα, τα αγγλικά και τα γερμανικά
+                χρησιμοποιούν το λατινικό αλφάβητο, τα ελληνικά έχουν
+                το δικό τους αλφάβητο και τα βουλγαρικά χρησιμοποιούν
+                το κυριλλικό. Βεβαιωθείτε ότι σημειώνετε σωστά τη
+                γλώσσα! </p>
+              <p lang="bg"> Различните езици могат да използват
+                различни азбуки или писмени системи – например
+                английският и немският използват латиницата, гръцкият
+                има своя собствена азбука, а българският използва
+                кирилицата. Уверете се, че езикът е правилно
+                отбелязан! </p>
+            </article>
+            <article id="tabpanel-5" role="tabpanel"
+              aria-labelledby="tab-5" class="">
+              <p> HTML Tags geben dem Dokument nicht nur eine
+                Struktur, sondern verleihen auch eine Bedeutung. Diese
+                Bedeutung sollten wir immer nutzen:
+              <ul>
+                <li>für einen Link? Verwende
+                  <code>&lt;a href="https://....."&gt;</code>, nicht
+                  <code>&lt;span&gt;</code> oder
+                  <code>&lt;div&gt;</code></li>
+                <li>für eine Liste? Verwende <code>&lt;li&gt;</code>,
+                  nicht <code>&lt;span&gt;</code> oder
+                  <code>&lt;div&gt;</code></li>
+                <li>für eine Überschrift? Verwende
+                  <code>&lt;h1&gt;</code>, nicht
+                  <code>&lt;strong&gt;</code> oder
+                  <code>&lt;div&gt;</code></li>
+                <li>für einen Absend-Button? verwende
+                  <code>&lt;input type="submit"&gt;</code>, nicht
+                  <code>&lt;span&gt;</code> oder
+                  <code>&lt;div&gt;</code></li>
+              </ul>
               </p>
-            </div>
+            </article>
           </div>
-          <article>
-            <p lang="en"> Different languages may use different
-              alphabets or scripts—for example, both English and
-              German use the Latin alphabet, Greek has its own
-              alphabet, and Bulgarian uses Cyrillic. Be sure to mark
-              the language correctly! </p>
-            <p lang="de"> Verschiedene Sprachen können
-              unterschiedliche Alphabete oder Schriftsysteme verwenden
-              – zum Beispiel verwenden Englisch und Deutsch das
-              lateinische Alphabet, Griechisch hat ein eigenes
-              Alphabet und Bulgarisch verwendet das kyrillische
-              Alphabet. Achten Sie darauf, die Sprache korrekt zu
-              kennzeichnen! </p>
-            <p lang="el"> Διαφορετικές γλώσσες ενδέχεται να
-              χρησιμοποιούν διαφορετικά αλφάβητα ή συστήματα γραφής –
-              για παράδειγμα, τα αγγλικά και τα γερμανικά
-              χρησιμοποιούν το λατινικό αλφάβητο, τα ελληνικά έχουν το
-              δικό τους αλφάβητο και τα βουλγαρικά χρησιμοποιούν το
-              κυριλλικό. Βεβαιωθείτε ότι σημειώνετε σωστά τη γλώσσα!
-            </p>
-            <p lang="bg"> Различните езици могат да използват различни
-              азбуки или писмени системи – например английският и
-              немският използват латиницата, гръцкият има своя
-              собствена азбука, а българският използва кирилицата.
-              Уверете се, че езикът е правилно отбелязан! </p>
-          </article>
           <div class="mt-xl"></div>
           <div class="formGrid">
             <div><label>Email</label><input type="text"
@@ -403,8 +444,8 @@
               <div class="userCardHandle c-bodyDimmed">@kiyoko</div>
             </div><button class="button buttonSmall">Follow</button>
           </div>
-          <div class="searchSection"><input type="text"
-              class="textInput" placeholder="Search"></div>
+          <div class="searchSection"><label>Suche<input type="text"
+              class="textInput" placeholder="suchworte hier eingeben"></label></div>
           <div class="post mb-xl">
             <div class="postLeft">
               <div class="postAvatar"></div>
@@ -475,7 +516,7 @@
     </div>
   </div>
   <script>
-        // Function to handle property changes
+    // Function to handle property changes
     function change_property(propertyName, newValue) {
       // Update the corresponding display input
       const displayElement = document.getElementById(propertyName + '_display');
@@ -553,7 +594,7 @@
         }
       });
 
-            // Function to set random values for all range inputs
+      // Function to set random values for all range inputs
       function setRandom() {
         // Generate random values for each range input
         rangeInputDefinitions.forEach(input => {
@@ -577,13 +618,13 @@
         });
       }
 
-            // Function to set random values for all range inputs
+      // Function to set random values for all range inputs
       function setAllValues() {
         // iterate over the definitions
         rangeInputDefinitions.forEach(input => {
           const rangeElement = document.getElementById(input.id);
           if (rangeElement) {
-                        const valueWithUnit = rangeElement.value + input.postfix;
+            const valueWithUnit = rangeElement.value + input.postfix;
             change_property(input.property, valueWithUnit);
           }
         });

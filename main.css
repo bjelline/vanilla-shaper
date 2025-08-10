@@ -311,16 +311,11 @@ body {
   padding: var(--space-l);
   width: 50%;
 }
-.codeSection {
+
+
+ code {
   background-color: var(--c-overlay);
-  padding: var(--space-l);
-  overflow: auto;
-  width: 100%;
-}
-.snippetSection.withPreview .codeSection {
-  width: 50%;
-}
-.codeSection code {
+
   font-family: "Roboto Mono";
 }
 .demoSpace {
@@ -578,7 +573,6 @@ input[type="range"] {
   cursor: pointer;
 }
 input[type="range"]:focus {
-  outline: none;
 }
 input[type="range"]:focus::-webkit-slider-thumb,
 input[type="range"]:hover::-webkit-slider-thumb {
